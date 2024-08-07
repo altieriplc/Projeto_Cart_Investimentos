@@ -4,7 +4,8 @@ from pprint import pprint
 planilha = pd.ExcelFile(
     'https://raw.githubusercontent.com/altieriplc/Projeto_Cart_Investimentos/main/Dados_Cart_Inv_Realizado%20-%20Portf.xlsx'
 )
-# O uso de "raw" (bruto) é necessário ao acessar arquivos diretamente do GitHub porque essa URL fornece o conteúdo real do arquivo sem o HTML
+# O uso de "raw" (bruto) é necessário ao acessar arquivos diretamente do GitHub
+# porque essa URL fornece o conteúdo real do arquivo sem o HTML
 
 abas = planilha.sheet_names  # variável para somente imprimir os nomes das abas
 print(abas)
@@ -17,10 +18,18 @@ dados_caixa_2024_df = pd.read_excel(
     sheet_name='Caixa Resultado 24').fillna(0)
 #.fillna(0): Este método do pandas preenche todas as células que contêm valores NaN
 
+dados_caixa_2024_df = dados_caixa_2024_df.rename(columns={'Unnamed: 0':'Ativos'}) #renomeando coluna
+
+
+dados_caixa_2024_df.loc[~dados_caixa_2024_df.index.isin([0, 2, 9, 18, 26, 27]), 'Ativos'] = dados_caixa_2024_df.loc[~dados_caixa_2024_df.index.isin([0, 2, 9, 18, 26, 27]), 'Ativos'].str[5:]
+
+
+dados_caixa_2024_df.drop(1, inplace=True)
+# remove a linha especificada (linha com índice 1) do DataFrame
+
 pprint(dados_caixa_2024_df)
 
-#dados_caixa_2024_df.drop(1, inplace=True)
-# remove a linha especificada (linha com índice 1) do DataFrame
+
 # inplace determina se a operação deve ser realizada no proprio Datafram
 
 #dados_caixa_2024_df.to_excel('C:/Users/altie/OneDrive/Altieri/Softwares/Dev/Projetos Pessoais/Python/ Realizado - Alterado.xlsx',index=False) # O parâmetro index=False é usado na função to_excel para indicar que você não deseja incluir o índice do DataFrame como uma coluna adicional no arquivo Excel exportado
