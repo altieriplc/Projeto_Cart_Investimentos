@@ -1,11 +1,13 @@
 import pandas as pd
-from pprint import pprint
 
 planilha = pd.ExcelFile(
     'https://raw.githubusercontent.com/altieriplc/Projeto_Cart_Investimentos/main/Dados_Cart_Inv_Realizado%20-%20Portf.xlsx'
 )
-# O uso de "raw" (bruto) é necessário ao acessar arquivos diretamente do GitHub
-# porque essa URL fornece o conteúdo real do arquivo sem o HTML
+"""
+O uso de "raw" (bruto) na URL é necessário ao acessar arquivos diretamente do GitHub.
+Essa URL fornece o conteúdo real do arquivo em vez do HTML da página, permitindo que
+a função pd.ExcelFile carregue o arquivo corretamente.
+    """
 
 abas = planilha.sheet_names  # variável para somente imprimir os nomes das abas
 print(abas)
@@ -18,17 +20,32 @@ dados_caixa_2024_df = pd.read_excel(
     sheet_name='Caixa Resultado 24').fillna(0)
 #.fillna(0): Este método do pandas preenche todas as células que contêm valores NaN
 
-dados_caixa_2024_df = dados_caixa_2024_df.rename(columns={'Unnamed: 0':'Ativos'}) #renomeando coluna
+dados_caixa_2024_df = dados_caixa_2024_df.rename(
+    columns={'Unnamed: 0': 'Ativos'})  #renomeando coluna
 
+dados_caixa_2024_df.loc[~dados_caixa_2024_df.index.isin([0, 2, 9, 18, 26, 27]),
+                        'Ativos'] = dados_caixa_2024_df['Ativos'].str[5:]
+"""
+Remove os primeiros 5 caracteres de algumas linhas da coluna "Ativos"
 
-dados_caixa_2024_df.loc[~dados_caixa_2024_df.index.isin([0, 2, 9, 18, 26, 27]), 'Ativos'] = dados_caixa_2024_df.loc[~dados_caixa_2024_df.index.isin([0, 2, 9, 18, 26, 27]), 'Ativos'].str[5:]
+Código:
+~ -> inverte a série booleana, para selecionar índices que não estão na lisata
+.str[5:] -> cria uma nova série de strings que começa a partir do 6º caractere
 
+"""
 
 dados_caixa_2024_df.drop(1, inplace=True)
 # remove a linha especificada (linha com índice 1) do DataFrame
 
-pprint(dados_caixa_2024_df)
+dados_caixa_2024_df['Média'] = (dados_caixa_2024_df.sum(
+    axis=1, numeric_only=True)/12).round(2)
+# calcula a média dos 12 meses
 
+dados_caixa_2024_df['Total'] = dados_caixa_2024_df.drop(columns=['Média']).sum(
+    axis=1, numeric_only=True).round(2)
+# calcula a soma total dos 12 meses
+
+print(dados_caixa_2024_df)
 
 # inplace determina se a operação deve ser realizada no proprio Datafram
 
