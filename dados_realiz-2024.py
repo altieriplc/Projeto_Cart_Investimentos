@@ -45,7 +45,17 @@ dados_caixa_2024_df['Total'] = dados_caixa_2024_df.drop(columns=['Média']).sum(
     axis=1, numeric_only=True).round(2)
 # calcula a soma total dos 12 meses
 
+dados_caixa_2024_df.at[2,'Ativos'] = 'Total Renda Fixa' # alteração do nome
+dados_caixa_2024_df.at[0,'Ativos'] = 'Total Geral'
+
+dados_caixa_2024_df.loc[[9, 18], 'Ativos'] = ["Total Fii's", "Total Div Ações"] # altera mais de um nome de uma vez
+dados_caixa_2024_df.loc[[26, 27], 'Ativos'] = ['Total Crypto', 'Bitcoin']
+
 print(dados_caixa_2024_df)
+
+caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
+
+dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
 
 # inplace determina se a operação deve ser realizada no proprio Datafram
 
