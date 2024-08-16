@@ -36,17 +36,19 @@ Código:
 
 dados_caixa_2024_df.drop(1, inplace=True)
 # remove a linha especificada (linha com índice 1) do DataFrame
+#inplace=True é utilizado em operações que alteram o próprio DataFrame ou Series, em vez de retornar uma nova cópia modificada
+#não é necessário atribuir o resultado a uma nova variável
 
 dados_caixa_2024_df['Média'] = (dados_caixa_2024_df.sum(
     axis=1, numeric_only=True)/12).round(2)
 # calcula a média dos 12 meses
 
-dados_caixa_2024_df['Total'] = dados_caixa_2024_df.drop(columns=['Média']).sum(
+dados_caixa_2024_df['Total Anual'] = dados_caixa_2024_df.drop(columns=['Média']).sum(
     axis=1, numeric_only=True).round(2)
 # calcula a soma total dos 12 meses
 
 dados_caixa_2024_df.at[2,'Ativos'] = 'Total Renda Fixa' # alteração do nome
-dados_caixa_2024_df.at[0,'Ativos'] = 'Total Geral'
+dados_caixa_2024_df.at[0,'Ativos'] = 'Total Geral Mensal'
 
 dados_caixa_2024_df.loc[[9, 18], 'Ativos'] = ["Total Fii's", "Total Div Ações"] # altera mais de um nome de uma vez
 dados_caixa_2024_df.loc[[26, 27], 'Ativos'] = ['Total Crypto', 'Bitcoin']
