@@ -23,6 +23,7 @@ dados_caixa_2024_df = pd.read_excel(
 dados_caixa_2024_df = dados_caixa_2024_df.rename(
     columns={'Unnamed: 0': 'Ativos'})  #renomeando coluna
 
+# "excluir" primeiros 5 caracteres
 dados_caixa_2024_df.loc[~dados_caixa_2024_df.index.isin([0, 2, 9, 18, 26, 27]),
                         'Ativos'] = dados_caixa_2024_df['Ativos'].str[5:]
 """
@@ -36,7 +37,7 @@ Código:
 
 dados_caixa_2024_df.drop(1, inplace=True)
 # remove a linha especificada (linha com índice 1) do DataFrame
-#inplace=True é utilizado em operações que alteram o próprio DataFrame ou Series, em vez de retornar uma nova cópia modificada
+# inplace=True é utilizado em operações que alteram o próprio DataFrame ou Series, em vez de retornar uma nova cópia modificada
 #não é necessário atribuir o resultado a uma nova variável
 
 dados_caixa_2024_df['Média'] = (dados_caixa_2024_df.sum(
@@ -47,17 +48,52 @@ dados_caixa_2024_df['Total Anual'] = dados_caixa_2024_df.drop(columns=['Média']
     axis=1, numeric_only=True).round(2)
 # calcula a soma total dos 12 meses
 
-dados_caixa_2024_df.at[2,'Ativos'] = 'Total Renda Fixa' # alteração do nome
+
+# ---------------------------- inserção de linhas ---------------------------- #
+# criando linhas
+novas_linhas = pd.DataFrame([
+    ['CDB'] + [0] * (len(dados_caixa_2024_df.columns) - 1)], columns=dados_caixa_2024_df.columns)
+
+# insere novas linhas
+dados_caixa_2024_df = pd.concat([
+    dados_caixa_2024_df.iloc[:3],  # Parte antes da inserção
+    novas_linhas,                  # Linha nova
+    dados_caixa_2024_df.iloc[3:]   # Parte depois da inserção
+], ignore_index=True)
+# ---------------------------- inserção de linhas ---------------------------- #
+
+
+# -------------------------------- soma linhas ------------------------------- #
+soma_linhas = dados_caixa_2024_df.iloc[[2, 4, 6, 7, 8]].sum()
+dados_caixa_2024_df.loc[3] = ['CDB'] + soma_linhas[1:].tolist()
+#é usado para converter uma série ou uma coluna de um DataFrame em uma lista Python
+# -------------------------------- soma linhas ------------------------------- #
+
+
+# ------------------------------ exclusão linhas ----------------------------- #
+dados_caixa_2024_df = dados_caixa_2024_df.drop([2, 4, 6, 7, 8], axis=0)
+# ------------------------------ exclusão linhas ----------------------------- #
+
+
+# ------------------------------ alteração nomes ----------------------------- #
+dados_caixa_2024_df.at[1,'Ativos'] = 'Total Renda Fixa' # alteração do nome
 dados_caixa_2024_df.at[0,'Ativos'] = 'Total Geral Mensal'
+dados_caixa_2024_df.at[5,'Ativos'] = 'Outros Renda Fixa'
 
 dados_caixa_2024_df.loc[[9, 18], 'Ativos'] = ["Total Fii's", "Total Div Ações"] # altera mais de um nome de uma vez
 dados_caixa_2024_df.loc[[26, 27], 'Ativos'] = ['Total Crypto', 'Bitcoin']
+# ------------------------------ alteração nomes ----------------------------- #
+
 
 print(dados_caixa_2024_df)
+
+# ------------------------------------- Exportação GITHUB ------------------------------------ #
 
 caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
 
 dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
+
+# ------------------------------------- Exportação GITHUB ------------------------------------ #
 
 # inplace determina se a operação deve ser realizada no proprio Datafram
 
