@@ -3,27 +3,26 @@ import pandas as pd
 planilha = pd.ExcelFile(
     'https://raw.githubusercontent.com/altieriplc/Projeto_Cart_Investimentos/main/Dados_Cart_Inv_Realizado%20-%20Portf.xlsx'
 )
-"""
-O uso de "raw" (bruto) na URL é necessário ao acessar arquivos diretamente do GitHub.
-Essa URL fornece o conteúdo real do arquivo em vez do HTML da página, permitindo que
-a função pd.ExcelFile carregue o arquivo corretamente.
-    """
 
-abas = planilha.sheet_names  # variável para somente imprimir os nomes das abas
-print(abas)
+
+abas = planilha.sheet_names  # variável para somente "imprimir" os nomes das abas
+#print(abas)
+
 
 realizado2024 = 'Caixa Resultado 24'  # variável para associar a aba especifica dentro do arq excel
-print(realizado2024)  # imprime somento o nome da aba
+
 
 dados_caixa_2024_df = pd.read_excel(
     'https://raw.githubusercontent.com/altieriplc/Projeto_Cart_Investimentos/main/Dados_Cart_Inv_Realizado%20-%20Portf.xlsx',
     sheet_name='Caixa Resultado 24').fillna(0)
+# lendo a planilha e armazenando em um dataframe
 #.fillna(0): Este método do pandas preenche todas as células que contêm valores NaN
+
 
 dados_caixa_2024_df = dados_caixa_2024_df.rename(
     columns={'Unnamed: 0': 'Ativos'})  #renomeando coluna
 
-# "excluir" primeiros 5 caracteres
+
 dados_caixa_2024_df.loc[~dados_caixa_2024_df.index.isin([0, 2, 9, 18, 26, 27]),
                         'Ativos'] = dados_caixa_2024_df['Ativos'].str[5:]
 """
@@ -35,14 +34,17 @@ Código:
 
 """
 
+
 dados_caixa_2024_df.drop(1, inplace=True)
 # remove a linha especificada (linha com índice 1) do DataFrame
 # inplace=True é utilizado em operações que alteram o próprio DataFrame ou Series, em vez de retornar uma nova cópia modificada
 #não é necessário atribuir o resultado a uma nova variável
 
+
 dados_caixa_2024_df['Média'] = (dados_caixa_2024_df.sum(
     axis=1, numeric_only=True)/12).round(2)
 # calcula a média dos 12 meses
+
 
 dados_caixa_2024_df['Total Anual'] = dados_caixa_2024_df.drop(columns=['Média']).sum(
     axis=1, numeric_only=True).round(2)
@@ -75,23 +77,23 @@ dados_caixa_2024_df = dados_caixa_2024_df.drop([2, 4, 6, 7, 8], axis=0)
 # ------------------------------ exclusão linhas ----------------------------- #
 
 
-# ------------------------------ alteração nomes ----------------------------- #
+# ------------------------------ renomeando colunas ----------------------------- #
 dados_caixa_2024_df.at[1,'Ativos'] = 'Total Renda Fixa' # alteração do nome
 dados_caixa_2024_df.at[0,'Ativos'] = 'Total Geral Mensal'
 dados_caixa_2024_df.at[5,'Ativos'] = 'Outros Renda Fixa'
 
 dados_caixa_2024_df.loc[[9, 18], 'Ativos'] = ["Total Fii's", "Total Div Ações"] # altera mais de um nome de uma vez
 dados_caixa_2024_df.loc[[26, 27], 'Ativos'] = ['Total Crypto', 'Bitcoin']
-# ------------------------------ alteração nomes ----------------------------- #
+# ------------------------------ renomeando colunas ----------------------------- #
 
 
 print(dados_caixa_2024_df)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
-caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
+#caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
 
-dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
+#dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
