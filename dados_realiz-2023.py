@@ -43,7 +43,12 @@ dados_caixa_2023_df['Média'] = (
 dados_caixa_2023_df['Jan'] = 0.00
 dados_caixa_2023_df['Fev'] = 0.00
 dados_caixa_2023_df['Mar'] = 0.00
+dados_caixa_2023_df['Preço Médio Pago'] = None
+dados_caixa_2023_df.loc[[5, 6, 7, 8 ,9 , 10, 11, 12],'Preço Médio Pago'] = [205.20, 3351.60, 3227.14, 3219.44, 2995.30, 3043.30, 3042.39, 3018.54]
 # cria meses faltando
+
+dados_caixa_2023_df['Preço Médio Pago'] = dados_caixa_2023_df['Preço Médio Pago'].fillna(0)
+#preenche valores vazios com zero
 
 novas_linhas = pd.DataFrame([
     ['Total Crypto'] + [0] * (len(dados_caixa_2023_df.columns) - 1),
@@ -61,8 +66,6 @@ dados_caixa_2023_df = dados_caixa_2023_df.rename(columns={'Anual': 'Total Anual'
 # renomeia uma coluna
 
 
-dados_caixa_2023_df = dados_caixa_2023_df[['Ativos', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez', 'Média', 'Total Anual']]
-# reorganiza a ordem das colunas
 
 
 dados_caixa_2023_df = dados_caixa_2023_df.drop(columns=['Total Anual'])
@@ -74,6 +77,8 @@ dados_caixa_2023_df['Total Anual'] = dados_caixa_2023_df.drop(columns=['Média']
 # cria uma nova coluna total anual com condicionais de soma, caso existam alterações futuras
 
 
+dados_caixa_2023_df = dados_caixa_2023_df[['Ativos', 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez', 'Média', 'Total Anual', 'Preço Médio Pago']]
+# reorganiza a ordem das colunas
 
 
 
