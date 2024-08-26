@@ -53,13 +53,13 @@ dados_caixa_2024_df['Total Anual'] = dados_caixa_2024_df.drop(columns=['Média']
 
 # ---------------------------- inserção de linhas ---------------------------- #
 # criando linhas
-novas_linhas = pd.DataFrame([
+linha_cdb = pd.DataFrame([
     ['CDB'] + [0] * (len(dados_caixa_2024_df.columns) - 1)], columns=dados_caixa_2024_df.columns)
 
 # insere novas linhas
 dados_caixa_2024_df = pd.concat([
     dados_caixa_2024_df.iloc[:3],  # Parte antes da inserção
-    novas_linhas,                  # Linha nova
+    linha_cdb,                     # Linha nova
     dados_caixa_2024_df.iloc[3:]   # Parte depois da inserção
 ], ignore_index=True)
 # ---------------------------- inserção de linhas ---------------------------- #
@@ -87,13 +87,36 @@ dados_caixa_2024_df.loc[[26, 27], 'Ativos'] = ['Total Crypto', 'Bitcoin']
 # ------------------------------ renomeando colunas ----------------------------- #
 
 
+# ------------------------------------- inserção coluna novos valores ------------------------------------ #
+dados_caixa_2024_df['Preço Médio Pago'] = None
+dados_caixa_2024_df.loc[[10, 11,12, 13, 14, 15, 16, 17],'Preço Médio Pago'] = [205.20, 3351.60, 3227.14, 3219.44, 2995.30, 3043.30, 3042.39, 3018.54]
+# ------------------------------------- inserção coluna novos valores ------------------------------------ #
+
+
+dados_caixa_2024_df = dados_caixa_2024_df.reset_index(drop=True)# reiniciando indices
+
+
+# ---------------------------- inserção de linhas ---------------------------- #
+linha_vsho11 = pd.DataFrame([
+    ['VSHO11'] + [0] * (len(dados_caixa_2024_df.columns) - 1)], columns=dados_caixa_2024_df.columns)
+#print(linha_vsho11)
+
+dados_caixa_2024_df = pd.concat([
+    dados_caixa_2024_df.iloc[:13],  # Parte antes da inserção
+    linha_vsho11,                     # Linha nova
+    dados_caixa_2024_df.iloc[13:]   # Parte depois da inserção
+], ignore_index=True)
+# ---------------------------- inserção de linhas ---------------------------- #
+
+
+#print(len(dados_caixa_2024_df))
 print(dados_caixa_2024_df)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
-#caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
+caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
 
-#dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
+dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 

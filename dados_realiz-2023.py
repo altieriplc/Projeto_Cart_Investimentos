@@ -84,10 +84,10 @@ dados_caixa_2023_df = dados_caixa_2023_df[['Ativos', 'Jan', 'Fev', 'Mar', 'Abr',
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 # r é para que o python entenda as barras invertidas no caminho
-caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2023_tratados.xlsx'
+#caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2023_tratados.xlsx'
 
 # index false para o indice não ser exportado
-dados_caixa_2023_df.to_excel(caminho_arquivo, index=False)
+#dados_caixa_2023_df.to_excel(caminho_arquivo, index=False)
 #print(dados_caixa_2023_df['Anual'])
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
