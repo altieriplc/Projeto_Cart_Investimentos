@@ -58,7 +58,6 @@ novas_linhas = pd.DataFrame([
 
 dados_caixa_2023_df = pd.concat([dados_caixa_2023_df, novas_linhas], ignore_index=True)
 # Concatena as novas linhas ao DataFrame original
-
 # ---------------------------- inserção de linhas e colunas ----------------------- #
 
 
@@ -66,10 +65,11 @@ dados_caixa_2023_df = dados_caixa_2023_df.rename(columns={'Anual': 'Total Anual'
 # renomeia uma coluna
 
 
-
-
 dados_caixa_2023_df = dados_caixa_2023_df.drop(columns=['Total Anual'])
 # exclui a coluna total anual, pois era composta por valores
+
+
+dados_caixa_2023_df = dados_caixa_2023_df.drop([0, 1, 4, 0, 13, 19],axis=0)
 
 
 dados_caixa_2023_df['Total Anual'] = dados_caixa_2023_df.drop(columns=['Média']).sum(
@@ -84,10 +84,10 @@ dados_caixa_2023_df = dados_caixa_2023_df[['Ativos', 'Jan', 'Fev', 'Mar', 'Abr',
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 # r é para que o python entenda as barras invertidas no caminho
-#caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2023_tratados.xlsx'
+caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2023_tratados.xlsx'
 
 # index false para o indice não ser exportado
-#dados_caixa_2023_df.to_excel(caminho_arquivo, index=False)
+dados_caixa_2023_df.to_excel(caminho_arquivo, index=False)
 #print(dados_caixa_2023_df['Anual'])
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
