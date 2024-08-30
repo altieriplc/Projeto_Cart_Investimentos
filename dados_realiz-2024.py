@@ -90,7 +90,7 @@ dados_caixa_2024_df.loc[[26, 27], 'Ativos'] = ['Total Crypto', 'Bitcoin']
 # ------------------------------------- inserção coluna novos valores ------------------------------------ #
 dados_caixa_2024_df['Preço Médio Pago'] = None
 dados_caixa_2024_df.loc[[10, 11,12, 13, 14, 15, 16, 17],'Preço Médio Pago'] = [205.20, 3351.60, 3227.14, 3219.44, 2995.30, 3043.30, 3042.39, 3018.54]
-# ------------------------------------- inserção coluna novos valores ------------------------------------ #
+# ------------------------------------- inserção coluna novos valores ---------------------------- #
 
 
 dados_caixa_2024_df = dados_caixa_2024_df.reset_index(drop=True)# reiniciando indices
@@ -109,14 +109,20 @@ dados_caixa_2024_df = pd.concat([
 # ---------------------------- inserção de linhas ---------------------------- #
 
 
+dados_caixa_2024_df = dados_caixa_2024_df.drop([0, 1, 4, 14, 22], axis=0) # exclusão de mais linhas com nova numeração de indices
+
+
+dados_caixa_2024_df = dados_caixa_2024_df.reset_index(drop=True)# reiniciando indices
+
+
 #print(len(dados_caixa_2024_df))
 print(dados_caixa_2024_df)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
-#caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
+caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
 
-#dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
+dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
