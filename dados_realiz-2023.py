@@ -51,8 +51,7 @@ dados_caixa_2023_df['Preço Médio Pago'] = dados_caixa_2023_df[
 #preenche valores vazios com zero
 
 novas_linhas = pd.DataFrame(
-    [['Total Crypto'] + [0] * (len(dados_caixa_2023_df.columns) - 1),
-     ['Bitcoin'] + [0] * (len(dados_caixa_2023_df.columns) - 1)],
+    [['Bitcoin'] + [0] * (len(dados_caixa_2023_df.columns) - 1)],
     columns=dados_caixa_2023_df.columns)
 # cria as duas novas linhas
 
@@ -68,7 +67,7 @@ dados_caixa_2023_df = dados_caixa_2023_df.rename(
 dados_caixa_2023_df = dados_caixa_2023_df.drop(columns=['Total Anual'])
 # exclui a coluna total anual, pois era composta por valores
 
-dados_caixa_2023_df = dados_caixa_2023_df.drop([0, 1, 4, 0, 13, 19], axis=0)
+dados_caixa_2023_df = dados_caixa_2023_df.drop([0, 1, 4, 0, 13], axis=0)
 
 dados_caixa_2023_df['Total Anual'] = dados_caixa_2023_df.drop(
     columns=['Média']).sum(axis=1, numeric_only=True).round(2)
@@ -93,6 +92,7 @@ dados_caixa_2023_df = pd.concat([
     dados_caixa_2023_df.iloc[10:]   # Parte depois da inserção
 ], ignore_index=True)
 # ---------------------------- inserção de linhas ---------------------------- #
+
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 # r é para que o python entenda as barras invertidas no caminho
