@@ -1,7 +1,7 @@
 import pandas as pd
 
 planilha = pd.ExcelFile(
-    'https://raw.githubusercontent.com/altieriplc/Projeto_Cart_Investimentos/main/Dados_Cart_Inv_Realizado%20-%20Portf.xlsx'
+    'https://raw.githubusercontent.com/altieriplc/Projeto_Cart_Investimentos/main/Dados_Base_Cart_Inv_Realizado%20-%20Portf.xlsx'
 )
 
 
@@ -13,7 +13,7 @@ realizado2024 = 'Caixa Resultado 24'  # variável para associar a aba especifica
 
 
 dados_caixa_2024_df = pd.read_excel(
-    'https://raw.githubusercontent.com/altieriplc/Projeto_Cart_Investimentos/main/Dados_Cart_Inv_Realizado%20-%20Portf.xlsx',
+    'https://raw.githubusercontent.com/altieriplc/Projeto_Cart_Investimentos/main/Dados_Base_Cart_Inv_Realizado%20-%20Portf.xlsx',
     sheet_name='Caixa Resultado 24').fillna(0)
 # lendo a planilha e armazenando em um dataframe
 #.fillna(0): Este método do pandas preenche todas as células que contêm valores NaN
