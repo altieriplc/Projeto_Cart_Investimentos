@@ -82,12 +82,24 @@ dados_caixa_2023_df = dados_caixa_2023_df[[
 
 dados_caixa_2023_df = dados_caixa_2023_df.reset_index(drop=True)# reiniciando indices
 
+# ---------------------------- inserção de linhas ---------------------------- #
+linha_vsho11 = pd.DataFrame([
+    ['VSHO11'] + [0] * (len(dados_caixa_2023_df.columns) - 1)], columns=dados_caixa_2023_df.columns)
+#print(linha_vsho11)
+
+dados_caixa_2023_df = pd.concat([
+    dados_caixa_2023_df.iloc[:10],  # Parte antes da inserção
+    linha_vsho11,                     # Linha nova
+    dados_caixa_2023_df.iloc[10:]   # Parte depois da inserção
+], ignore_index=True)
+# ---------------------------- inserção de linhas ---------------------------- #
+
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 # r é para que o python entenda as barras invertidas no caminho
-#caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2023_tratados.xlsx'
+caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2023_tratados.xlsx'
 
 # index false para o indice não ser exportado
-#dados_caixa_2023_df.to_excel(caminho_arquivo, index=False)
+dados_caixa_2023_df.to_excel(caminho_arquivo, index=False)
 #print(dados_caixa_2023_df['Anual'])
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
