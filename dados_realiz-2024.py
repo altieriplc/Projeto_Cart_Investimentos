@@ -120,9 +120,9 @@ print(dados_caixa_2024_df)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
-caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
+#caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
 
-dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
+#dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 

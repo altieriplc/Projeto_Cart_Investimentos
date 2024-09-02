@@ -81,6 +81,7 @@ dados_caixa_2023_df = dados_caixa_2023_df[['Ativos', 'Jan', 'Fev', 'Mar', 'Abr',
 # reorganiza a ordem das colunas
 
 
+dados_caixa_2023_df = dados_caixa_2023_df.reset_index(drop=True)# reiniciando indices
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 # r é para que o python entenda as barras invertidas no caminho
