@@ -120,9 +120,9 @@ print(dados_caixa_2024_df)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
-#caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
+caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
 
-#dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
+dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
@@ -138,7 +138,4 @@ print(dados_caixa_2024_df)
 
 #print(dados_caixa_2024_df)
 
-# quando exportar pela segunda vez o arquivo antigo automaticamente é sobreposto o arquivo antigo
-# o arquivo do git hub só é alterado atravez de commit?
-# tem como alterar o arquivo original se eu tiver buscando ele na pasta? ou só exportando um novo?
-#commit final limpar o arquivos mas deixa um cópia pessoal salva
+
