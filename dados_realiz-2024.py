@@ -2,7 +2,7 @@ import pandas as pd
 
 planilha = pd.ExcelFile(
     'https://raw.githubusercontent.com/altieriplc/Projeto_Cart_Investimentos/main/Dados_Base_Cart_Inv_Realizado%20-%20Portf.xlsx'
-)
+) # carrega o arquivo para o local de trabalho diretamente do github
 
 
 abas = planilha.sheet_names  # variável para somente "imprimir" os nomes das abas
@@ -29,7 +29,7 @@ dados_caixa_2024_df.loc[~dados_caixa_2024_df.index.isin([0, 2, 9, 18, 26, 27]),
 Remove os primeiros 5 caracteres de algumas linhas da coluna "Ativos"
 
 Código:
-~ -> inverte a série booleana, para selecionar índices que não estão na lisata
+~ -> inverte a série booleana, para selecionar índices que não estão na lista
 .str[5:] -> cria uma nova série de strings que começa a partir do 6º caractere
 
 """
@@ -52,7 +52,6 @@ dados_caixa_2024_df['Total Anual'] = dados_caixa_2024_df.drop(columns=['Média']
 
 
 # ---------------------------- inserção de linhas ---------------------------- #
-# criando linhas
 linha_cdb = pd.DataFrame([
     ['CDB'] + [0] * (len(dados_caixa_2024_df.columns) - 1)], columns=dados_caixa_2024_df.columns)
 
@@ -115,27 +114,14 @@ dados_caixa_2024_df = dados_caixa_2024_df.drop([0, 1, 4, 14, 22], axis=0) # excl
 dados_caixa_2024_df = dados_caixa_2024_df.reset_index(drop=True)# reiniciando indices
 
 
-#print(len(dados_caixa_2024_df))
 print(dados_caixa_2024_df)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
-caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
+#caminho_arquivo = r'C:\Users\altie\OneDrive\Altieri\Softwares\Dev\Projetos Pessoais\Projeto_Carteira_Investimento\dados_realiz-2024_tratados.xlsx'
 
-dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
+#dados_caixa_2024_df.to_excel(caminho_arquivo, index=False)
 
 # ------------------------------------- Exportação GITHUB ------------------------------------ #
 
-# inplace determina se a operação deve ser realizada no proprio Datafram
-
-#dados_caixa_2024_df.to_excel('C:/Users/altie/OneDrive/Altieri/Softwares/Dev/Projetos Pessoais/Python/ Realizado - Alterado.xlsx',index=False) # O parâmetro index=False é usado na função to_excel para indicar que você não deseja incluir o índice do DataFrame como uma coluna adicional no arquivo Excel exportado
-
-#dados_caixa_2024_df['Soma Total'] = dados_caixa_2024_df['Jan'] + dados_caixa_2024_df['Fev']
-# soma de colunas especificas
-
-#dados_caixa_2024_df['Soma Total'] = dados_caixa_2024_df.loc[:, 'Jan':'Dez'].sum(axis=1)
-# soma determinando intervalo de colunas
-
-#print(dados_caixa_2024_df)
-
-
+# index=False é usado na função to_excel para indicar que você não deseja incluir o índice do DataFrame como uma coluna adicional no arquivo Excel exportado
