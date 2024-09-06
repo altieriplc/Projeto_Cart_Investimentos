@@ -20,8 +20,8 @@ Tratamento final em Power Query
 ## Sobre o Dashboard
 
 1- O Dashboard abaixo tem como objeto a visualização simples do retorno de investimentos dentro de um período específico.  
-    - Na tabela a esquerda é possível escolher o mês desejado e o ativo desejado
-    - Valores fictícios
+    - Na tabela a esquerda é possível escolher o mês desejado e o ativo desejado  
+    - Valores fictícios  
     * Nenhum dos ativos listados abaixo caracteriza recomendação de compra, venda ou qualquer operação de investimentos.
 
 
