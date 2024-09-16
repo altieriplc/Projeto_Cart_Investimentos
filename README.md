@@ -19,11 +19,13 @@ Tratamento final em Power Query
 
 ## Sobre o Dashboard
 
-1- O Dashboard abaixo tem como objeto a visualização simples do retorno de investimentos dentro de um período específico.  
-    - Na tabela a esquerda é possível escolher o mês desejado e o ativo desejado  
-    - Valores fictícios  
-    * Nenhum dos ativos, ou informações listados abaixo caracteriza recomendação de compra, venda ou qualquer operação de investimentos.
+1- Os Dashboards abaixo tem como objeto a visualização simples do retorno de investimentos dentro de um período específico.  
+    - Na primeira tabela um modelo mais simples para visualização.  
+    - Na segunda tabela, uma tabela mais elaborada com uma base de dados maior, permitindo mais opções de filtros e visualizações
 
 
 ![Visualização do Projeto](https://github.com/altieriplc/Projeto_Cart_Investimentos/blob/main/Dashboard.png)
 
+
+
+![Visualização do Projeto] (https://github.com/altieriplc/Projeto_Cart_Investimentos/blob/main/Dashboard_2.png)
