@@ -23,7 +23,7 @@ Tratamento final em Power Query
     - Na primeira tabela um modelo mais simples para visualização.  
     - Na segunda tabela, uma tabela mais elaborada com uma base de dados maior, permitindo mais opções de filtros e visualizações  
 
-*nenhuma ativo, operação ou valor citado abaixo configura recomendação de investimentos
+*nenhum ativo, operação ou valor citado abaixo configura recomendação de investimentos
 
 
 ![Visualização do Projeto](https://github.com/altieriplc/Projeto_Cart_Investimentos/blob/main/Dashboard.png)
