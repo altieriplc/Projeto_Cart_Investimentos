@@ -21,7 +21,9 @@ Tratamento final em Power Query
 
 1- Os Dashboards abaixo tem como objeto a visualização simples do retorno de investimentos dentro de um período específico.  
     - Na primeira tabela um modelo mais simples para visualização.  
-    - Na segunda tabela, uma tabela mais elaborada com uma base de dados maior, permitindo mais opções de filtros e visualizações
+    - Na segunda tabela, uma tabela mais elaborada com uma base de dados maior, permitindo mais opções de filtros e visualizações  
+
+*nenhuma ativo, operação ou valor citado abaixo configura recomendação de investimentos
 
 
 ![Visualização do Projeto](https://github.com/altieriplc/Projeto_Cart_Investimentos/blob/main/Dashboard.png)
@@ -29,3 +31,4 @@ Tratamento final em Power Query
 
 
 ![Visualização do Projeto](https://github.com/altieriplc/Projeto_Cart_Investimentos/blob/main/Dashboard_2.png)
+
