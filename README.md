@@ -28,4 +28,4 @@ Tratamento final em Power Query
 
 
 
-![Visualização do Projeto] (https://github.com/altieriplc/Projeto_Cart_Investimentos/blob/main/Dashboard_2.png)
+![Visualização do Projeto](https://github.com/altieriplc/Projeto_Cart_Investimentos/blob/main/Dashboard_2.png)
